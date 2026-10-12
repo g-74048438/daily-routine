@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Day 2: My Daily Routine | Interactive Worksheet</title>
+<style>
+:root{--navy:#183153;--blue:#2864dc;--pale:#eef5ff;--green:#16845b;--red:#c43c45;--gold:#f5b942;--ink:#233044;--muted:#64748b}
+*{box-sizing:border-box}body{margin:0;background:#f4f7fb;color:var(--ink);font:16px/1.5 Arial,Helvetica,sans-serif}
+header{background:linear-gradient(120deg,#17345b,#2864dc);color:white;padding:28px 16px 34px;text-align:center}
+header h1{margin:0;font-size:clamp(1.5rem,4vw,2.25rem)}header p{margin:8px 0 0}
+.wrap{max-width:950px;margin:-16px auto 40px;padding:0 14px}
+.panel{background:#fff;border-radius:16px;padding:22px;margin:16px 0;box-shadow:0 5px 18px #16345b12}
+.identity{display:grid;grid-template-columns:2fr 1fr 1fr;gap:12px}
+label{display:block;font-weight:700;margin-bottom:5px}input[type=text],input[type=date],textarea{width:100%;padding:11px 12px;border:1px solid #cbd5e1;border-radius:9px;font:inherit;background:#fff}
+h2{color:var(--navy);margin:0 0 5px;font-size:1.35rem}.hint{color:var(--muted);margin:0 0 16px;font-size:.94rem}
+.question{padding:14px 0;border-top:1px solid #e8edf4}.question:first-of-type{border-top:0}
+.qtitle{font-weight:700;margin-bottom:9px}.options{display:grid;gap:7px}
+.option{display:flex;gap:9px;align-items:flex-start;padding:9px 11px;border:1px solid #dbe3ee;border-radius:9px;cursor:pointer;background:#fff}
+.option:hover{background:var(--pale);border-color:#9db8f5}.option input{margin-top:5px;accent-color:var(--blue)}
+.option.correct{border-color:#69b99a;background:#eaf8f1}.option.wrong{border-color:#e7a0a4;background:#fff0f0}
+.feedback{display:none;margin-top:7px;font-size:.92rem}.feedback.show{display:block}.feedback.good{color:var(--green)}.feedback.bad{color:var(--red)}
+textarea{min-height:68px;resize:vertical}.writing-item{margin:15px 0}
+.actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+button{border:0;border-radius:10px;padding:12px 18px;font:700 1rem Arial;cursor:pointer}
+.primary{background:var(--blue);color:#fff}.secondary{background:#e7edf6;color:var(--navy)}button:disabled{opacity:.6;cursor:wait}
+#results{display:none}.score{font-size:2rem;font-weight:800;color:var(--blue)}.notice{padding:12px 14px;border-radius:10px;background:#fff8df;color:#785516;margin:12px 0}
+.success{padding:12px 14px;border-radius:10px;background:#eaf8f1;color:#176345;margin:12px 0}
+footer{text-align:center;color:var(--muted);font-size:.85rem;padding:0 12px 28px}
+@media(max-width:650px){.identity{grid-template-columns:1fr}.panel{padding:16px}}
+</style>
+</head>
+<body>
+<header>
+  <h1>My Daily Routine</h1>
+  <p>Primary English Year 2 &amp; 3 · Day 2 · TP4–TP6</p>
+  <p>Read each question carefully. Choose one answer, then submit to check your work.</p>
+</header>
+<main class="wrap">
+  <section class="panel">
+    <h2>Student Details</h2>
+    <p class="hint">Please fill in your details before answering.</p>
+    <div class="identity">
+      <div><label for="studentName">Name</label><input id="studentName" type="text" placeholder="Enter your full name" required></div>
+      <div><label for="studentClass">Class</label><input id="studentClass" type="text" placeholder="e.g. Year 3" required></div>
+      <div><label for="workDate">Date</label><input id="workDate" type="date"></div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Section A: Grammar &amp; Time Expressions</h2>
+    <p class="hint">TP4 · Choose the best answer for each sentence. (8 questions)</p>
+    <div id="sectionA"></div>
+  </section>
+  <section class="panel">
+    <h2>Section B: Sequence Connectors &amp; Sentence Combining</h2>
+    <p class="hint">TP5 · Choose the sentence with the correct order or grammar. (8 questions)</p>
+    <div id="sectionB"></div>
+  </section>
+  <section class="panel">
+    <h2>Section C: Reading Comprehension</h2>
+    <p class="hint">TP5–TP6 · Read the passage, then answer the questions. (8 questions)</p>
+    <div style="background:#f2f7ff;border-left:4px solid #2864dc;padding:15px;border-radius:8px;margin-bottom:12px">
+      <strong>A Productive Day in Adam's Life</strong><br>
+      Adam is a diligent Year 3 pupil. Every morning, he wakes up at 6:00 a.m. First, he makes his bed and washes his face. Next, he eats a delicious breakfast of eggs and milk with his sister at 6:30 a.m. At 7:15 a.m., Adam walks to school because his house is nearby. After school at 1:30 p.m., Adam comes home and eats lunch. In the afternoon at 4:00 p.m., he plays football with his friends in the garden. Then, he completes his homework at 7:00 p.m. because he wants to revise his lessons every day. Finally, Adam reads a bedtime story and goes to sleep peacefully at 9:00 p.m.
+    </div>
+    <div id="sectionC"></div>
+  </section>
+  <section class="panel">
+    <h2>Section D: My Ideal Daily Routine</h2>
+    <p class="hint">TP6 · Write your own answers. Your teacher will review these responses; they are not included in the automatic score.</p>
+    <div id="sectionD"></div>
+  </section>
+  <section class="panel">
+    <h2>Submit Your Worksheet</h2>
+    <p class="hint">You can check your answers after submitting. Your objective-question score and written answers will also be sent to your teacher when the class submission link is connected.</p>
+    <div class="actions">
+      <button class="primary" id="submitBtn" type="button">Submit Answers &amp; Check</button>
+      <button class="secondary" id="resetBtn" type="button">Start Again</button>
+    </div>
+    <div id="results" aria-live="polite">
+      <div class="score" id="scoreText"></div>
+      <div id="scoreDetail"></div>
+      <div class="notice">Check the feedback under each question. Written answers in Section D are saved for your teacher to review.</div>
+      <div id="submitStatus" role="status"></div>
+    </div>
+  </section>
+</main>
+<footer>Day 2 Interactive Worksheet · My Daily Routine</footer>
+<script>
+// IMPORTANT: Paste your deployed Google Apps Script Web App URL between the quotes below.
+// It normally ends with /exec. Keep the quotation marks.
+const SCRIPT_URL = "PASTE_YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE";
+
+const data = {
+A: [
+["Sarah ___ at six o'clock in the morning to prepare for school.",["wake up","wakes up","waking up"],1,"Sarah wakes up..."],
+["The children ___ their teeth before having breakfast.",["brush","brushes","brushing"],0,"Use 'brush' with the plural subject 'children'."],
+["My elder brother ___ his revision at 4:30 p.m. after school.",["do","does","doing"],1,"Use 'does' with 'my elder brother'."],
+["We eat our healthy lunch in the canteen ___ 12:30 p.m.",["in","on","at"],2,"Use 'at' with a specific clock time."],
+["Timmy ___ to bed early at nine o'clock.",["go","goes","going"],1,"Use 'goes' with 'Timmy'."],
+["My parents and I ___ badminton in the park at 5:30 p.m.",["plays","play","playing"],1,"Use 'play' with 'My parents and I'."],
+["Mei Ling ___ her storybook at 8:30 p.m.",["read","reads","reading"],1,"Use 'reads' with 'Mei Ling'."],
+["He ___ a quick shower at seven o'clock every day.",["take","takes","taking"],1,"Use 'takes' with 'he'."] ],
+B: [
+["Choose the correct sentence using First and Next.",["First, I wash my face. Next, I wake up.","First, I wake up at 6:00 a.m. Next, I wash my face and brush my teeth.","Next, I sleep. First, I wake up."],1,"Wake up first, then wash your face and brush your teeth."],
+["She finishes her dinner at 7:00 p.m. ___, she does her English homework.",["After that","Yesterday","Because"],0,"'After that' shows the next action."],
+["Choose the best sentence using Finally.",["Finally, we pack our school bags. Then, we sleep.","Finally, we turn off the lights and go to sleep.","Finally, we wake up and eat dinner."],1,"Going to sleep is the final action in this sequence."],
+["Which sentence puts the actions in a logical order?",["First, I wake up. Next, I get ready for bed.","First, I go to sleep. Next, I wake up.","First, I wake up at six. Next, I wash my face."],2,"Waking up before washing your face is logical."],
+["Choose the grammatically correct sentence.",["She brush her teeth and eat breakfast.","She brushes her teeth and eats breakfast.","She brushing her teeth and eats breakfast."],1,"With 'she', use 'brushes' and 'eats'."],
+["Choose the expanded sentence.",["He plays football.","He plays football after school at five o'clock.","He football after school."],1,"The sentence includes both time details."],
+["Choose the correct sequence for the morning.",["First, take a bath. Then, wear my school uniform. Finally, have breakfast.","Finally, take a bath. First, have breakfast. Then, sleep.","First, go to school. Finally, wake up."],0,"This follows the requested First–Then–Finally structure."],
+["Change to third person: 'I get up at 6:30 a.m. and ride my bicycle to school.'",["Adam get up at 6:30 a.m. and ride his bicycle to school.","Adam gets up at 6:30 a.m. and rides his bicycle to school.","Adam gets up at 6:30 a.m. and ride my bicycle to school."],1,"Use 'gets' and 'rides' for Adam; use 'his bicycle'."]
+],
+C: [
+["What time does Adam wake up every morning?",["5:30 a.m.","6:00 a.m.","6:30 a.m."],1,"The passage says he wakes up at 6:00 a.m."],
+["What is the very first thing Adam does after waking up?",["He makes his bed and washes his face.","He eats lunch.","He plays football."],0,"First, he makes his bed and washes his face."],
+["What does Adam eat for breakfast?",["Rice and fish","Eggs and milk","Bread and juice"],1,"He eats eggs and drinks milk with his sister."],
+["How does Adam travel to school, and why?",["He takes a bus because it is far.","He cycles because it is raining.","He walks because his house is nearby."],2,"He walks to school because his house is nearby."],
+["What does Adam do at 4:00 p.m.?",["He plays football with his friends.","He reads a bedtime story.","He eats breakfast."],0,"He plays football in the garden."],
+["Why does Adam do his homework at 7:00 p.m.?",["He wants to revise his lessons every day.","His friends ask him to play.","He wants to go to school early."],0,"The passage gives revision as his reason."],
+["What does Adam do right before going to sleep?",["He eats lunch.","He reads a bedtime story.","He walks to school."],1,"Finally, he reads a bedtime story."],
+["Is Adam's routine healthy and balanced? Choose the best reason.",["Yes, because he studies, exercises, eats meals and gets sleep.","No, because he never does homework.","No, because he plays football all day."],0,"His routine includes learning, exercise, meals and sleep."]
+]};
+const writingPrompts = [
+["In my ideal daily routine, I wake up at ...","e.g. 6:00 a.m."],
+["First, ... Next, ... (two good morning habits)","Write two habits using First and Next."],
+["At 7:00 a.m., I have ... (healthy breakfast)","Name nutritious food and a drink."],
+["During school, I like ... because ...","Name a favourite lesson and give a reason."],
+["After school at 5:00 p.m., I ...","Describe an outdoor sport or fun activity."],
+["In the evening at 7:30 p.m., my family and I ...","Describe an activity with your family."],
+["Finally, at 9:00 p.m., I ...","Describe a bedtime habit."],
+["Write a 4–5 sentence paragraph about your ideal daily routine.","Use sequence connectors such as First, Next, Then and Finally."]
+];
+function renderMC(section, targetId){
+ const target=document.getElementById(targetId);
+ data[section].forEach((q,i)=>{
+  const box=document.createElement('div');box.className='question';box.dataset.section=section;box.dataset.index=i;
+  const title=document.createElement('div');title.className='qtitle';title.textContent=(i+1)+'. '+q[0];box.appendChild(title);
+  const opts=document.createElement('div');opts.className='options';
+  q[1].forEach((opt,j)=>{
+   const lab=document.createElement('label');lab.className='option';
+   const radio=document.createElement('input');radio.type='radio';radio.name=section+i;radio.value=j;
+   const span=document.createElement('span');span.textContent=opt;
+   lab.append(radio,span);opts.appendChild(lab);
+  });
+  box.appendChild(opts);const fb=document.createElement('div');fb.className='feedback';fb.id='fb'+section+i;box.appendChild(fb);target.appendChild(box);
+ });
+}
+renderMC('A','sectionA');renderMC('B','sectionB');renderMC('C','sectionC');
+writingPrompts.forEach((p,i)=>{
+ const box=document.createElement('div');box.className='writing-item';
+ const lab=document.createElement('label');lab.htmlFor='writing'+i;lab.textContent=(i+1)+'. '+p[0];
+ const area=document.createElement('textarea');area.id='writing'+i;area.placeholder=p[1];
+ box.append(lab,area);document.getElementById('sectionD').appendChild(box);
+});
+function markSection(s){
+ let score=0;
+ data[s].forEach((q,i)=>{
+  const chosen=document.querySelector('input[name="'+s+i+'"]:checked');
+  const box=document.querySelector('.question[data-section="'+s+'"][data-index="'+i+'"]');
+  box.querySelectorAll('.option').forEach((lab,j)=>{lab.classList.remove('correct','wrong');if(j===q[2])lab.classList.add('correct');if(chosen&&Number(chosen.value)===j&&j!==q[2])lab.classList.add('wrong')});
+  const fb=document.getElementById('fb'+s+i);fb.className='feedback show '+(chosen&&Number(chosen.value)===q[2]?'good':'bad');
+  fb.textContent=(chosen&&Number(chosen.value)===q[2]?'Correct! ':'Correct answer: '+q[1][q[2]]+'. ')+q[3];
+  if(chosen&&Number(chosen.value)===q[2])score++;
+ });return score;
+}
+function getWriting(){return writingPrompts.map((p,i)=>({prompt:p[0],answer:document.getElementById('writing'+i).value.trim()}));}
+document.getElementById('submitBtn').addEventListener('click',async()=>{
+ const name=document.getElementById('studentName').value.trim(), cls=document.getElementById('studentClass').value.trim();
+ if(!name||!cls){alert('Please enter your name and class first.');window.scrollTo({top:0,behavior:'smooth'});return;}
+ const a=markSection('A'),b=markSection('B'),c=markSection('C'),total=a+b+c;
+ document.getElementById('scoreText').textContent='Your score: '+total+' / 24';
+ document.getElementById('scoreDetail').textContent='Section A: '+a+'/8 · Section B: '+b+'/8 · Section C: '+c+'/8. Section D is for teacher review.';
+ const results=document.getElementById('results');results.style.display='block';
+ const status=document.getElementById('submitStatus');status.className='';status.textContent='';
+ results.scrollIntoView({behavior:'smooth',block:'start'});
+ const payload={name,studentClass:cls,date:document.getElementById('workDate').value||new Date().toISOString().slice(0,10),
+ sectionA:a,sectionB:b,sectionC:c,total,stars:Math.round(total/24*5),
+ sectionD:JSON.stringify(getWriting()),answers:JSON.stringify({A:getAnswers('A'),B:getAnswers('B'),C:getAnswers('C')})};
+ if(!SCRIPT_URL||SCRIPT_URL.includes('PASTE_YOUR')){
+  status.className='notice';status.textContent='Your answers have been checked on this device, but teacher submission is not connected yet. The teacher must add the Google Apps Script Web App /exec URL to this worksheet.';
+  return;
+ }
+ const btn=document.getElementById('submitBtn');btn.disabled=true;btn.textContent='Submitting...';
+ try{
+  await fetch(SCRIPT_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(payload)});
+  status.className='success';status.textContent='Submission sent to your teacher. Your score is shown above.';
+ }catch(e){status.className='notice';status.textContent='The score could not be sent. Please tell your teacher and try again.';}
+ finally{btn.disabled=false;btn.textContent='Submit Answers & Check';}
+});
+function getAnswers(s){return data[s].map((q,i)=>{const el=document.querySelector('input[name="'+s+i+'"]:checked');return {question:q[0],answer:el?q[1][Number(el.value)]:'Not answered',correctAnswer:q[1][q[2]],isCorrect:!!el&&Number(el.value)===q[2]}})}
+document.getElementById('resetBtn').addEventListener('click',()=>{if(confirm('Clear all answers and start again?'))location.reload()});
+document.getElementById('workDate').value=new Date().toISOString().slice(0,10);
+</script>
+</body>
+</html>
